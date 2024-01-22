@@ -1,5 +1,9 @@
 const { Sequelize, DataTypes } = require('sequelize')
+const express = require('express')
+const session = require('express-session')
 const UserModel = require('../models/user.js')
+
+
  
 // variable contenant la base de donnée et les tables
 const sequelize = new Sequelize('nation_sound', 'root', '', {
@@ -10,6 +14,8 @@ const sequelize = new Sequelize('nation_sound', 'root', '', {
   },
   logging: false
 })
+
+
 
 
 // variable contenant une instance de table avec les colonnes et leurs type de données
