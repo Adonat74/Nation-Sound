@@ -22,8 +22,8 @@ sequelize.initDb()
 // require('./src/routes/createPokemon')(app)
 // require('./src/routes/updatePokemon')(app)
 // require('./src/routes/deletePokemon')(app)
-// require('./src/routes/login')(app)
-// require('./src/routes/createUser')(app)
+require('./src/routes/user/login')(app)
+require('./src/routes/user/createUser')(app)
 
 // On ajoute la gestion des erreurs 404
 app.use(({res}) => {
