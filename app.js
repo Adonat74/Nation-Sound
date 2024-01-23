@@ -30,6 +30,7 @@ sequelize.initDb()
 require('./src/routes/user/login')(app)
 require('./src/routes/user/createUser')(app)
 require('./src/routes/user/updateUser')(app)
+require('./src/routes/user/deleteUser')(app)
 
 // On ajoute la gestion des erreurs 404
 app.use(({res}) => {

@@ -2,7 +2,6 @@ const { User } = require('../../db/sequelize')
 const { ValidationError, UniqueConstraintError } = require('sequelize')
 const auth = require('../../auth/auth')
 const bcrypt = require('bcrypt')
-
 const jwt = require('jsonwebtoken')
 const privateKey = require('../../auth/private-key')
 
