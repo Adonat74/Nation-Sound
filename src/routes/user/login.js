@@ -26,16 +26,6 @@ module.exports = (app) => {
           { expiresIn: '24h' }
         )
 
-        // req.session.save(() => {
-        //   req.session.logged_in = true;
-        //   req.session.user = {
-        //     id: user.id
-        //   }
-        //   res.json({ user: user, message: 'You are now logged in!' });
-        // })
-
-
-        
         const message = `L'utilisateur a été connecté avec succès`;
         return res.json({ message, data: user, token })
       })

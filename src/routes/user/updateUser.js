@@ -1,20 +1,20 @@
 const { User } = require('../../db/sequelize')
 const { ValidationError, UniqueConstraintError } = require('sequelize')
 const auth = require('../../auth/auth')
+const bcrypt = require('bcrypt')
 
 const jwt = require('jsonwebtoken')
 const privateKey = require('../../auth/private-key')
 
   
 module.exports = (app) => {
-  app.put('/api/updateUser/', auth, (req, res) => {
-    const userId = jwt.decode(req.headers.authorization.split(' ')[1], privateKey).userId
+    app.put('/api/updateUser/', auth, (req, res) => {
+        const userId = jwt.decode(req.headers.authorization.split(' ')[1], privateKey).userId
 
-
-        User.update(req.body, {
+        bcrypt.hash(`${req.body.password}`, 10)
+        .then(hash => User.update({ ...req.body, password: hash }, {
             where: { id: userId.toString() }
-          })
-      
+        }))
         .then(_ => {
             // return permet d'avoir un seul .catch error 500 pour les deux .then
             return User.findByPk(userId).then(user => {
@@ -40,7 +40,8 @@ module.exports = (app) => {
                 return res.status(400).json({ message: error.message, data: error })
             }
             const message = `L'utilisateur n'a pas pu être modifié. Réessayez dans quelques instants.`
+            
             res.status(500).json({ message, data: error })
         })
-  })
+    })
 }
