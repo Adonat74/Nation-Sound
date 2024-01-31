@@ -28,25 +28,14 @@ module.exports = (sequelize, DataTypes) => {
       favoritemusicgenre: {
         type: DataTypes.STRING,
         allowNull: false,
-        get() {
-            return this.getDataValue('favoritemusicgenre').split(',')
-        },
-        set(favoritemusicgenre) {
-            this.setDataValue('favoritemusicgenre', favoritemusicgenre.join())
-        },
         validate: {
             isMusicGenreValid(value) {
               if (!value) {
-                throw new Error('Choisissez au moin un genre')
+                throw new Error('Choisissez un genre')
               }
-              if (value.split(',').length > 3) {
-                throw new Error('Vous ne pouvez pas choisir plus de 3 genres.')
+              if (!validMusicGenre.includes(value)) {
+                throw new Error(`Les genre choisis doivent appartenir à la liste suivante : ${validMusicGenre}`)
               }
-              value.split(',').forEach(type => {
-                if (!validMusicGenre.includes(type)) {
-                  throw new Error(`Les genre choisis doivent appartenir à la liste suivante : ${validMusicGenre}`)
-                }
-              });
             }
           }
       }

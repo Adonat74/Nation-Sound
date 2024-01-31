@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize')
 const UserModel = require('../models/user.js')
-const ArtistModel = require('../models/artist.js')
+//const ArtistModel = require('../models/artist.js')
 
 
  
@@ -19,7 +19,7 @@ const sequelize = new Sequelize('nation_sound', 'root', '', {
 
 // variable contenant une instance de table avec les colonnes et leurs type de données
 const User = UserModel(sequelize, DataTypes)
-const Artist = ArtistModel(sequelize, DataTypes)
+//const Artist = ArtistModel(sequelize, DataTypes)
 
 
 //Initialise/synchronise la table pokemon au démarrage de l'application avec les données ce trouvant dans pokemons.js
@@ -34,5 +34,5 @@ const initDb = () => {
 // export de initDB vers le point d'entrée, app.js
 // export de la variable Pokemon et User contenant la table vers les routes
 module.exports = { 
-  initDb, User, Artist
+  initDb, User//, Artist
 }
