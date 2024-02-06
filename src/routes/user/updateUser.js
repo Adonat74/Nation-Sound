@@ -27,7 +27,7 @@ module.exports = (app) => {
         
         
                 const message = `L'utilisateur' ${user.username} a bien été modifié.`
-                res.json({message, data: user })
+                res.json({ message, data: user })
             })
         })
     

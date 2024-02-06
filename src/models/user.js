@@ -1,4 +1,4 @@
-const validMusicGenre = ['Aucun', 'Rap', 'Electro', 'Rock', 'Classique', 'Jazz', 'Reggae', 'Country', 'Latine', 'Pop']
+const validMusicGenre = ['aucun', 'rap', 'electro', 'rock', 'classique', 'jazz', 'reggae', 'country', 'latine', 'pop']
 
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('User', {
