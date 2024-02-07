@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
             isEmail: true
         }
       },
-      username: {
+      userName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING
       },
-      favoritemusicgenre: {
+      favoriteMusicGenre: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {

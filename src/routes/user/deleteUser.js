@@ -19,7 +19,7 @@ module.exports = (app) => {
         where: { id: userId }
       })
       .then(_ => {
-        const message = `L'utilisateur ${userDeleted.username} a bien été supprimé.`
+        const message = `L'utilisateur ${userDeleted.userName} a bien été supprimé.`
         res.json({message, data: userDeleted })
       })
     })

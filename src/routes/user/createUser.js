@@ -8,7 +8,7 @@ module.exports = (app) => {
         bcrypt.hash(`${req.body.password}`, 10)
         .then(hash => User.create({ ...req.body, password: hash }))
         .then(user => {
-            const message = `L'utilisateur ${req.body.username} a bien été crée.`
+            const message = `L'utilisateur ${req.body.userName} a bien été crée.`
             res.json({ message, data: user })
         })
 
