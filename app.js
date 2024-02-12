@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const sequelize = require('./src/db/sequelize');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const xss = require('xss-clean');
+const mongoSanitize = require('express-mongo-sanitize');
 
 
 
@@ -22,7 +24,9 @@ const limiter = rateLimit({
 
 
 // app.use permet "d'attacher" des middleware à notre API
-app.use(limiter)
+app.use(xss())
+   .use(mongoSanitize())
+   .use(limiter)
    .use(bodyParser.json())// sert à parser les données transmise à l'API
    .use(cors({origin: true, credentials: true}))
    
