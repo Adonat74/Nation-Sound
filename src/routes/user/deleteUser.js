@@ -1,7 +1,7 @@
 const { User } = require('../../db/sequelize')
 const auth = require('../../auth/auth')
 const jwt = require('jsonwebtoken')
-const privateKey = require('../../auth/private-key')
+const privateKey = require('../../credentials/private-key')
   
 module.exports = (app) => {
   app.delete('/api/deleteUser', auth, (req, res) => {

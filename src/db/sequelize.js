@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize')
 const UserModel = require('../models/user.js')
-const config = require('../db/dbConfig.js')
+const config = require('../credentials/dbConfig.js')
 
 
  

@@ -3,7 +3,7 @@ const { ValidationError, UniqueConstraintError } = require('sequelize')
 const auth = require('../../auth/auth')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const privateKey = require('../../auth/private-key')
+const privateKey = require('../../credentials/private-key')
 
   
 module.exports = (app) => {
