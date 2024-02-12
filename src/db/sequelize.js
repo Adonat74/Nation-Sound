@@ -5,7 +5,7 @@ const UserModel = require('../models/user.js')
 
  
 // variable contenant la base de donnée et les tables
-const sequelize = new Sequelize('nation_sound', 'root', '', {
+const sequelize = new Sequelize('nation_sound', 'root', 'root', {
   host: 'localhost',
   dialect: 'mariadb',
   dialectOptions: {
