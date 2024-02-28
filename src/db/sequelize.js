@@ -21,7 +21,7 @@ const sequelize = new Sequelize(config.DB_NAME, config.DB_USER, config.DB_PASSWO
 const User = UserModel(sequelize, DataTypes);
 
 
-//Initialise/synchronise la table pokemon au démarrage de l'application avec les données ce trouvant dans pokemons.js
+//Initialise/synchronise la table user au démarrage de l'application avec les données ce trouvant dans user.js
 const initDb = () => {
   return sequelize.sync({force: true}).then(_ => {
 
