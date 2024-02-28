@@ -1,4 +1,4 @@
-const validMusicGenre = ['aucun', 'rap', 'electro', 'rock', 'classique', 'jazz', 'reggae', 'country', 'latine', 'pop']
+const validMusicGenre = ['aucun', 'rap', 'electro', 'rock', 'classique', 'jazz', 'reggae', 'country', 'latine', 'pop'];
 
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('User', {
@@ -31,13 +31,13 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
             isMusicGenreValid(value) {
               if (!value) {
-                throw new Error('Choisissez un genre')
+                throw new Error('Choisissez un genre');
               }
               if (!validMusicGenre.includes(value)) {
-                throw new Error(`Les genre choisis doivent appartenir à la liste suivante : ${validMusicGenre}`)
+                throw new Error(`Les genre choisis doivent appartenir à la liste suivante : ${validMusicGenre}`);
               }
             }
-          }
+        }
       }
-    })
+    });
   }

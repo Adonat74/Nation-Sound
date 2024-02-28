@@ -1,6 +1,6 @@
-const { Sequelize, DataTypes } = require('sequelize')
-const UserModel = require('../models/user.js')
-const config = require('../credentials/dbConfig.js')
+const { Sequelize, DataTypes } = require('sequelize');
+const UserModel = require('../models/user.js');
+const config = require('../credentials/dbConfig.js');
 
 
  
@@ -25,13 +25,13 @@ const User = UserModel(sequelize, DataTypes);
 const initDb = () => {
   return sequelize.sync({force: true}).then(_ => {
 
-    console.log('La base de donnée a bien été initialisée !')
+    console.log('La base de donnée a bien été initialisée !');
   });
 }
 
 
 // export de initDB vers le point d'entrée, app.js
-// export de la variable Pokemon et User contenant la table vers les routes
+// export de la variable User contenant la table vers les routes
 module.exports = { 
   initDb, User
 }
