@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 // const privateKey = require('../../credentials/private-key');
 
   
-module.exports = (app) => {
+module.exports = (app) => { 
     app.put('/api/updateUser/', auth, (req, res) => {
 
         // Extraction de l'identifiant d'utilisateur à partir du jeton JWT décodé
