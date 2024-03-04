@@ -1,13 +1,13 @@
 const { User } = require('../../db/sequelize'); // Import du modèle User
 const auth = require('../../auth/auth'); // Import du middleware pour vérifier le jwt
 const jwt = require('jsonwebtoken'); 
-const privateKey = require('../../credentials/private-key');
+// const privateKey = require('../../credentials/private-key');
   
 module.exports = (app) => {
   app.delete('/api/deleteUser', auth, (req, res) => {
 
     // Extraction du userId à partir du jeton JWT décodé
-    const userId = jwt.decode(req.headers.authorization.split(' ')[1], privateKey).userId;
+    const userId = jwt.decode(req.headers.authorization.split(' ')[1], process.env.PRIVATE_KEY).userId;
 
     // Recherche de l'utilisateur dans la base de données
     User.findByPk(userId).then(user => {

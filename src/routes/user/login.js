@@ -1,7 +1,7 @@
 const { User } = require('../../db/sequelize'); // Import du modèle User
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const privateKey = require('../../credentials/private-key');
+// const privateKey = require('../../credentials/private-key');
   
 module.exports = (app) => {
   app.post('/api/login', (req, res) => {
@@ -23,7 +23,7 @@ module.exports = (app) => {
         // Création d'un jeton JWT pour l'utilisateur authentifié
         const token = jwt.sign(
           { userId: user.id },
-          privateKey,
+          process.env.PRIVATE_KEY,
           { expiresIn: 900 }// 15 minutes
         );
         // Renvoyer une réponse avec un message de succès et le jeton JWT

@@ -16,7 +16,7 @@ module.exports = (req, res, next) => {
 
 
   // Vérification de la validité du jeton JWT à l'aide de la clé privée
-  const decodedToken = jwt.verify(token, process.env.privateKey, (error, decodedToken) => {
+  const decodedToken = jwt.verify(token, process.env.PRIVATE_KEY, (error, decodedToken) => {
       if(error) {
       const message = `L'utilisateur n'est pas autorisé à accèder à cette ressource.`;
       return res.status(401).json({ message, data: error });

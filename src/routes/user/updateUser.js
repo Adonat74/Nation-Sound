@@ -3,14 +3,14 @@ const { ValidationError, UniqueConstraintError } = require('sequelize');
 const auth = require('../../auth/auth');  // Import du middleware pour vérifier le jwt
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const privateKey = require('../../credentials/private-key');
+// const privateKey = require('../../credentials/private-key');
 
   
 module.exports = (app) => {
     app.put('/api/updateUser/', auth, (req, res) => {
 
         // Extraction de l'identifiant d'utilisateur à partir du jeton JWT décodé
-        const userId = jwt.decode(req.headers.authorization.split(' ')[1], privateKey).userId;
+        const userId = jwt.decode(req.headers.authorization.split(' ')[1], process.env.PRIVATE_KEY).userId;
 
         // Hachage du nouveau mot de passe fourni par l'utilisateur
         bcrypt.hash(`${req.body.password}`, 10)
