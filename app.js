@@ -11,7 +11,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 // Initialisation de l'application Express
 const app = express();
 
-const port = 3001; // Définition du port sur lequel l'application écoutera les requêtes
+const port = process.env.PORT || 3001; // Définition du port sur lequel l'application écoutera les requêtes
 
 
 // sert à contrer les attaques DDOS en limitant le nombre de requètes à l'API
@@ -29,12 +29,21 @@ app.use(xss()) // Nettoyage contre les attaques XSS
    .use(mongoSanitize()) // Protection contre l'injection de données MongoDB
    .use(limiter) // Limite des requêtes pour contrer les attaques DDOS
    .use(bodyParser.json())// sert à parser les données transmise à l'API
-   .use(cors({origin: true, credentials: true})) // Gestion des requêtes CORS
+   .use(cors({origin: (origin, callback) => {
+        if ("https://nation-sound-app.onrender.com".indexOf(origin) !== -1 || !origin) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+},credentials: true})) // Gestion des requêtes CORS
    
 
 // Initialisation de la base de données Sequelize
 sequelize.initDb();
 
+app.get('/', (req, res) => {
+    res.json('Hello, Heroku !');
+})
 
 // Définition des routes pour les points de terminaison de l'API
 require('./src/routes/user/login')(app);
