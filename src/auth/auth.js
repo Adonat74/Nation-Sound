@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken'); // Importation de la bibliothèque JWT 
-const privateKey = require('../credentials/private-key'); // Importation de la clé privée pour la vérification JWT
+// const privateKey = require('../credentials/private-key'); // Importation de la clé privée pour la vérification JWT
   
 
 // Fonction middleware pour vérifier le jeton JWT dans l'en-tête de la requête
