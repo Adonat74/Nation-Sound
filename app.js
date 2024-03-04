@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./src/db/sequelize');
@@ -5,7 +6,6 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
-
 
 
 // Initialisation de l'application Express

@@ -17,6 +17,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 
 
 
+
+
 // variable contenant une instance de table avec les colonnes et leurs type de données
 const User = UserModel(sequelize, DataTypes);
 
