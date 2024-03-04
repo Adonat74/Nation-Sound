@@ -1,12 +1,12 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const UserModel = require('../models/user.js');
-const config = require('../credentials/dbConfig.js');
+// const config = require('../credentials/dbConfig.js');
 
 
  
 // variable contenant la base de donnée et les tables
-const sequelize = new Sequelize(config.DB_NAME, config.DB_USER, config.DB_PASSWORD, {
-  host: config.DB_HOST,
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
   dialect: 'mariadb',
   dialectOptions: {
     timezone: 'Etc/GMT-2',
