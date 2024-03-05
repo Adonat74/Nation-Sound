@@ -9,7 +9,13 @@ const sequelize = new Sequelize(config.DB_NAME, config.DB_USER, config.DB_PASSWO
   host: config.DB_HOST,
   port: 3306,
   logging: console.log,
-  dialect: 'mariadb'
+  dialect: 'mariadb',
+  dialectOptions: {
+    ssl: {
+      require: true, // Force SSL
+      rejectUnauthorized: false // Permet de contourner l'erreur liée à la vérification du certificat (optionnel)
+    }
+  }
 });
 
 
